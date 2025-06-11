@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+venv/
+
+# Playwright
+playwright/.cache/
+*.webm
+*.har
+
+# VS Code
+.vscode/
+
+# Node (React frontend)
+node_modules/
+build/
+dist/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment or secrets
+.env
+.env.*
+
+# PyInstaller
+*.spec
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
