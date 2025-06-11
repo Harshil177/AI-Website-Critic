@@ -1,36 +1,38 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.env
-venv/
+# === Python (Backend) ===
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.env
+backend/venv/
+*.spec
 
-# Playwright
+# === Node (React Frontend) ===
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# === VSCode / Editor Files ===
+.vscode/
+.idea/
+
+# === OS / Miscellaneous ===
+.DS_Store
+Thumbs.db
+*.log
+
+# === Playwright / Testing ===
 playwright/.cache/
 *.webm
 *.har
 
-# VS Code
-.vscode/
+# === Jupyter Notebooks (if any) ===
+.ipynb_checkpoints/
 
-# Node (React frontend)
-node_modules/
-build/
-dist/
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Environment or secrets
+# === Root-level environment or config ===
 .env
 .env.*
-
-# PyInstaller
-*.spec
-
-# Jupyter Notebooks
-.ipynb_checkpoints/
