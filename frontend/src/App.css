@@ -5,7 +5,6 @@ body {
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: white;
   overflow-x: hidden;
-  background-attachment: fixed;
 }
 
 .app-container {
@@ -19,25 +18,25 @@ body {
 
 .icon {
   color: #00d9ff;
-  margin-bottom: 1rem;
-  animation: float 3s ease-in-out infinite;
+  margin-bottom: 0.5rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.typewriter {
+  font-size: 18px;
+  color: #ccc;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #00d9ff, #00ffc8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  0% { transform: translatey(0px); }
+  50% { transform: translatey(-10px); }
+  100% { transform: translatey(0px); }
 }
 
 .input-section {
-  margin: 30px auto;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -45,83 +44,169 @@ body {
 }
 
 .input-section input {
-  padding: 0.8rem 1.2rem;
-  width: 320px;
-  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  width: 300px;
+  border-radius: 10px;
   border: none;
-  font-size: 17px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-size: 16px;
 }
 
 .input-section button {
-  padding: 0.8rem 1.5rem;
-  background: linear-gradient(90deg, #00d9ff, #00ffc8);
+  padding: 0.7rem 1.5rem;
+  background: #00d9ff;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: black;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s, background 0.3s;
+  transition: 0.3s;
 }
 
 .input-section button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #00ffc8, #00d9ff);
+  background: #00b4cc;
 }
 
-.loader {
+.loader-card {
   margin-top: 2rem;
-  font-size: 20px;
-  color: #ffd700;
-  animation: pulse 1s infinite;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+  backdrop-filter: blur(5px);
 }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
+.loader-shimmer {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #2c5364 25%, #203a43 50%, #2c5364 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
 }
 
 .error-msg {
   color: #ff4d4f;
   margin-top: 1rem;
-  font-weight: bold;
 }
+
 .result-section {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(60, 60, 60, 0.3));
   padding: 2rem;
-  margin-top: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  max-width: 900px;
+  margin-top: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
   white-space: pre-wrap;
-  animation: fadeIn 1.2s ease-in-out;
-  position: relative;
-  color: #f1f1f1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e0f7fa;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  font-size: 16px;
 }
 
-.result-section h2 {
-  color: #00e6ff;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+.search-icon {
+  color: #00d9ff;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.copy-btn {
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  transition: background 0.3s;
 }
 
-.result-section pre {
-  font-size: 1rem;
-  line-height: 1.7;
-  font-family: 'Fira Code', monospace;
-  color: #e0e0e0;
+.copy-btn:hover {
+  background-color: #1b5cb3;
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.copy-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+.copy-btn span {
+  font-size: 14px;
+}
+.copy-btn:disabled span {
+  color: #666;
+}
+.copy-btn:disabled svg {
+  fill: #666;
+}
+.copy-btn:active {
+  transform: scale(0.98);
+}
+.copy-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(45, 137, 239, 0.5);
+}
+.copy-btn:focus svg {
+  fill: #1b5cb3;
+}
+.copy-btn:focus span {
+  color: #1b5cb3;
+}
+.copy-btn:focus-visible {
+  outline: 2px solid #1b5cb3;
+  outline-offset: 2px;
+}
+.copy-btn:focus-visible svg {
+  fill: #1b5cb3;
+}
+.copy-btn:focus-visible span {
+  color: #1b5cb3;
+}
+.copy-btn:active svg {
+  fill: #1b5cb3;
+}
+.copy-btn:active span {
+  color: #1b5cb3;
+}
+.copy-btn:disabled:active {
+  transform: none;
+  background-color: #ccc;
+}
+.copy-btn:disabled:focus {
+  outline: none;
+  box-shadow: none;
+}
+.copy-btn:disabled:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.copy-btn:disabled:active svg {
+  fill: #666;
+}
+.copy-btn:disabled:active span {
+  color: #666;
+}
+.copy-btn:focus-visible:active {
+  outline: none;
+  box-shadow: none;
+} 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { FaRobot } from "react-icons/fa";
+import { FaRobot, FaSearch, FaClipboard } from "react-icons/fa";
+import { TypeAnimation } from "react-type-animation";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false); // 👈 Added
 
   const handleAnalyze = async () => {
     if (!url.startsWith("http")) {
@@ -32,6 +34,12 @@ function App() {
     }
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(response);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="app-container">
       <motion.div
@@ -40,9 +48,22 @@ function App() {
         transition={{ duration: 0.8 }}
         className="header"
       >
-        <FaRobot size={60} className="icon" />
-        <h1 className="gradient-text">AI Website Critic</h1>
-        <p>Analyze your website's UI, SEO & performance instantly.</p>
+        <FaRobot size={40} className="icon" />
+        <h1>AI Website Critic</h1>
+        <TypeAnimation
+          sequence={[
+            "Analyze UI instantly...",
+            2000,
+            "Optimize SEO in seconds...",
+            2000,
+            "Boost your performance now!",
+            2000,
+          ]}
+          wrapper="span"
+          speed={50}
+          repeat={Infinity}
+          className="typewriter"
+        />
       </motion.div>
 
       <motion.div
@@ -61,8 +82,14 @@ function App() {
       </motion.div>
 
       {loading && (
-        <motion.div className="loader" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}>
-          🔄 Analyzing website...
+        <motion.div
+          className="loader-card"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="loader-shimmer" />
+          <p>Analyzing website...</p>
         </motion.div>
       )}
 
@@ -75,7 +102,13 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="gradient-text">🔍 Review Summary</h2>
+          <h2><FaSearch className="search-icon" /> Review Summary</h2>
+
+          {/* 👇 Copy Button */}
+          <button className="copy-btn" onClick={handleCopy}>
+            <FaClipboard /> {copied ? "Copied!" : "Copy to clipboard"}
+          </button>
+
           <pre>{response}</pre>
         </motion.div>
       )}
